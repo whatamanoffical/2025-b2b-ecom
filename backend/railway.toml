@@ -1,7 +1,18 @@
 [build]
 builder = "nixpacks"
-buildCommand = "yarn install && NODE_ENV=production yarn build"
+buildCommand = """
+yarn install &&
+NODE_ENV=production yarn build
+"""
 
 [deploy]
-startCommand = "echo \"DATABASE_URL=$DATABASE_URL\" > .env && NODE_ENV=production yarn start"
+startCommand = """
+echo \"DATABASE_URL=$DATABASE_URL\" > .env &&
+echo \"REDIS_URL=$REDIS_URL\" >> .env &&
+echo \"STORE_CORS=*\" >> .env &&
+echo \"ADMIN_CORS=*\" >> .env &&
+echo \"JWT_SECRET=supersecret\" >> .env &&
+echo \"COOKIE_SECRET=supersecret\" >> .env &&
+NODE_ENV=production yarn start
+"""
 healthcheck = "/health"

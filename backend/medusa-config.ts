@@ -14,6 +14,17 @@ module.exports = defineConfig({
       cookieSecret: process.env.COOKIE_SECRET || "supersecret",
     },
   },
+  plugins: [
+    {
+      resolve: "@medusajs/admin",
+      options: {
+        path: "src/admin", // Removed the leading slash
+        develop: {
+          open: true,
+        },
+      },
+    },
+  ],
   modules: {
     companyModuleService: {
       resolve: "./modules/company",
