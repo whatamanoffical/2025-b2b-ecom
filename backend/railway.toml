@@ -5,4 +5,3 @@ buildCommand = "echo \"DATABASE_URL=$DATABASE_URL\nREDIS_URL=$REDIS_URL\nSTORE_C
 [deploy]
 startCommand = "yarn start"
 healthcheck = "/health"
-restartPolicyType = "on_failure"
