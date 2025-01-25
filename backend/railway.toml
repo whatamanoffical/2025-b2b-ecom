@@ -1,15 +1,8 @@
 [build]
 builder = "nixpacks"
-buildCommand = "yarn install && yarn build"
+buildCommand = "yarn install && yarn medusa db:create && yarn medusa db:migrate && yarn run seed && yarn medusa user -e admin@test.com -p supersecret -i admin && yarn build"
 
 [deploy]
 startCommand = "yarn start"
 healthcheck = "/health"
 restartPolicyType = "on_failure"
-
-[phases.setup]
-cmds = [
-  "yarn medusa db:migrate",
-  "yarn seed",
-  "yarn medusa user -e admin@test.com -p supersecret -i admin"
-]
