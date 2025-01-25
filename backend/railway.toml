@@ -1,6 +1,6 @@
 [build]
 builder = "nixpacks"
-buildCommand = "printf 'DATABASE_URL=%s\nREDIS_URL=%s\nSTORE_CORS=*\nADMIN_CORS=*\nJWT_SECRET=supersecret\nCOOKIE_SECRET=supersecret\n' \"$DATABASE_URL\" \"$REDIS_URL\" > .env && yarn install --immutable && yarn medusa db:create && yarn medusa db:migrate && yarn run seed && yarn medusa user -e admin@test.com -p supersecret -i admin && yarn build"
+buildCommand = "echo \"DATABASE_URL=$DATABASE_URL\" > .env && yarn install --immutable && yarn medusa db:create && yarn medusa db:migrate && yarn run seed && yarn medusa user -e admin@test.com -p supersecret -i admin && yarn build"
 
 [deploy]
 startCommand = "yarn start"
