@@ -12075,6 +12075,7 @@ __metadata:
     prop-types: "npm:^15.8.1"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
+    tailwindcss: "npm:^3.3.6"
     ts-node: "npm:^10.9.2"
     typescript: "npm:^5.5.3"
     vite: "npm:^5.2.11"
