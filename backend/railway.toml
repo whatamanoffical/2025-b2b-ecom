@@ -1,7 +1,7 @@
 [build]
 builder = "nixpacks"
-buildCommand = "yarn install --immutable && yarn build"
+buildCommand = "yarn install && yarn build"
 
 [deploy]
-startCommand = "echo \"DATABASE_URL=$DATABASE_URL\" > .env && yarn medusa db:migrate && yarn start"
+startCommand = "echo \"DATABASE_URL=$DATABASE_URL\" > .env && yarn dev"
 healthcheck = "/health"
