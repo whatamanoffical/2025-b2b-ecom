@@ -1,0 +1,15 @@
+[build]
+builder = "nixpacks"
+buildCommand = "yarn install && yarn build"
+
+[deploy]
+startCommand = "yarn start"
+healthcheck = "/health"
+restartPolicyType = "on_failure"
+
+[phases.setup]
+cmds = [
+  "yarn medusa db:migrate",
+  "yarn seed",
+  "yarn medusa user -e admin@test.com -p supersecret -i admin"
+]
