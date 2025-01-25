@@ -1,8 +1,8 @@
 [build]
 builder = "nixpacks"
-buildCommand = "echo \"DATABASE_URL=$DATABASE_URL\" > .env && yarn install && yarn medusa db:create && yarn medusa db:migrate && yarn run seed && yarn medusa user -e admin@test.com -p supersecret -i admin && yarn build"
+buildCommand = "echo \"DATABASE_URL=$DATABASE_URL\" > .env && yarn install --frozen-lockfile && yarn medusa db:create && yarn medusa db:migrate && yarn run seed && yarn medusa user -e admin@test.com -p supersecret -i admin && yarn build"
 
 [deploy]
-startCommand = "yarn start"
+startCommand = "echo \"DATABASE_URL=$DATABASE_URL\" > .env && yarn start"
 healthcheck = "/health"
 restartPolicyType = "on_failure"
